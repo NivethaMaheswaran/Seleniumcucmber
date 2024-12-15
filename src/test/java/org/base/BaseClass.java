@@ -10,12 +10,12 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BaseClass {
 public static WebDriver driver;
 
-public void lanBrowser() {
+public static void lanBrowser() {
 WebDriverManager.chromedriver().setup();
 driver = new ChromeDriver();
 }
 
-public void windowMaxi() {
+public static void windowMaxi() {
 driver.manage().window().maximize();
 }
 
@@ -23,12 +23,15 @@ public void launchUrl(String url) {
 driver.get(url);
 }
 
-public void pageTitle() {
+public String pageTitle() {
 String title = driver.getTitle();
 System.out.println(title);
+return title;
+
 }
-public void currentPageurl() {
+public String  currentPageurl() {
 String cUrl = driver.getCurrentUrl();System.out.println(cUrl);
+return cUrl;
 }
 public void passText(String username,WebElement ele) {
 ele.sendKeys(username);
@@ -37,7 +40,7 @@ ele.sendKeys(username);
 public void clickBtn(WebElement ele) {
 ele.click();
 }
-public void closeBrowser() {
+public static void closeBrowser() {
 driver.close();
 }
 
